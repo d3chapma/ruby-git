@@ -524,6 +524,7 @@ module Git
       arr_opts << '-f' if opts[:force]
       arr_opts << '-b' << opts[:new_branch] if opts[:new_branch]
       arr_opts << branch
+      arr_opts << "-t origin/#{branch}" if opts[:t] || opts[:track]
       
       command('checkout', arr_opts)
     end
