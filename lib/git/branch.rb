@@ -23,8 +23,8 @@ module Git
       @stashes ||= Git::Stashes.new(@base)
     end
     
-    def checkout
-      check_if_create
+    def checkout(opts = {})
+      check_if_create(opts)
       @base.checkout(@full)
     end
     
@@ -87,8 +87,8 @@ module Git
     
     private 
 
-      def check_if_create
-        @base.lib.branch_new(@name) rescue nil
+      def check_if_create(opts)
+        @base.lib.branch_new(@name, opts) rescue nil
       end
       
       def determine_current
