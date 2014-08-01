@@ -511,9 +511,8 @@ module Git
       command('stash list')
     end
     
-    def branch_new(branch, opts = {})
-      remote = opts[:t] || opts[:track] ? '' : "origin/#{branch}"
-      command('branch', [branch, remote])
+    def branch_new(branch)
+      command('branch', branch)
     end
     
     def branch_delete(branch)
